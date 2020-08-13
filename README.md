@@ -47,3 +47,13 @@ EOF
 docker run -v `pwd`/tmp:/opt/app/source --rm -it spark-container recipe.Recipe1
 ```
 
+### Create Spark Recipe For Local Dev
+This creates a spark project that you can compile and run locally. Once happy with it, you can ship it using container by performing a volume-mapping.
+```
+#generate a spark project
+docker run -v `pwd`/tmp/template:/tmp/template --rm -it spark-container create
+
+#run the project
+docker run -v `pwd`/tmp/template:/opt/app/source --rm -it spark-container run demo.Hello
+```
+
